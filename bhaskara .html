@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        article {
+            grid-column: 2;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            color: beige;
+        }
+
+        body {
+            background-image: radial-gradient(circle, rgb(38, 107, 124), rgb(43, 41, 167), rgb(63, 0, 63));
+        }
+    </style>
+    <script>
+        function imc() {
+            let a = document.getElementById("ValorA").value;
+            let b = document.getElementById("ValorB").value;
+            let c = document.getElementById("ValorC").value;
+            if (a == "") {
+                a = 0; 
+            }
+            else if (b == "") {
+                b = 0;
+            }
+            else if (c == 0) {
+                c = 0;
+            }
+            else {
+                let delta = b ** 2 - 4 * a * c;
+                if (delta < 0) {
+                    document.getElementById("resultado").innerHTML = `Não possui raízes`;
+                }
+                else if (delta == 0) {
+                    let resultado = -b / (2*a);
+                    document.getElementById("resultado").innerHTML = `A raíz Real é ${resultado}`;
+                }
+                else {
+                    let resultado1 = -b + Math.sqrt(delta) / (2*a);
+                    let resultado2 = -b - Math.sqrt(delta) / (2*a);
+                    document.getElementById("resultado").innerHTML = `A primeira raíz é ${resultado1} e a segunda é ${resultado2}`;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <main class="layout">
+        <article>
+            <form>
+                <input type="number" placeholder="A" style="margin-top: 30px;" id="ValorA">
+
+                <input type="number" placeholder="B" style="margin-top: 30px;" id="ValorB">
+
+                <input type="number" placeholder="C" style="margin-top: 30px;" id="ValorC">
+
+                <input type="button" id="btn" onclick="imc()">
+
+                <div style="margin-top: 30px;">
+                    <h1 id="resultado"></h1>
+                </div>
+
+            </form>
+        </article>
+    </main>
+</body>
+
+</html>

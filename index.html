@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        article {
+            grid-column: 2;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            color: beige;
+        }
+
+        body {
+            background-image: radial-gradient(circle, rgb(38, 107, 124), rgb(43, 41, 167), rgb(63, 0, 63));
+        }
+    </style>
+    <script>
+        function imc() {
+            let peso = document.getElementById("peso1").value;
+            let altura = document.getElementById("altura").value;
+            if (peso == "") {
+                alert("Informe o seu peso")
+            }
+            else if (altura == "") {
+                alert("informe a sua altura")
+            }
+            else {
+                let resultado = Number(peso) / (Number(altura) * Number(altura));
+                document.getElementById("resul").value = resultado;
+                console.log(peso)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <main class="layout">
+        <article>
+            <form>
+                <input type="number" placeholder="ESCREVA SEU PESO AQUI" style="margin-top: 30px;" id="peso1">
+
+                <input type="number" placeholder="ESCREVA SUA ALTURA AQUI" style="margin-top: 30px;" id="altura">
+
+                <input type="number" placeholder="RESULTADO" style="margin-top: 30px;" disabled id="resul">
+
+                <input type="button" placeholder="calcular" onclick="imc()">
+
+            </form>
+        </article>
+    </main>
+</body>
+
+</html>
