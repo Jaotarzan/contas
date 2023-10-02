@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        article {
+            grid-column: 2;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            color: beige;
+        }
+
+        li {
+            font-weight: normal;
+        }
+
+        body {
+            background-image: radial-gradient(circle, rgb(38, 107, 124), rgb(43, 41, 167), rgb(63, 0, 63));
+        }
+    </style>
+    <script>
+        
+        function filtrar() {
+            let filter = document.getElementById("filtro").value.toLowerCase();
+            let lis = document.getElementsByTagName("li");
+            for (const li of lis) {
+                if (li.innerText.toLowerCase().includes(filter)) {
+                    li.style.fontWeight = 'bold'
+                }
+                if (filter == "") {
+                    li.style.fontWeight = 'normal'
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <main class="layout">
+        <article>
+            <form>
+                <input type="text" placeholder="FILTRO" id="filtro" oninput="filtrar();">
+                <ul>
+                    <li>joca</li>
+                    <li>sergio</li>
+                    <li>rogerio</li>
+                    <li>junio</li>
+                </ul>
+            </form>
+        </article>
+    </main>
+</body>
+
+</html>
